@@ -39,9 +39,8 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
     }
     
     private void updateGameAfterLoad() {
-    //actualizarPosicionesJugadores();
-    //actualizarPropiedadesJugadores();
-        updatedMMInfo();
+        //actualizarPosicionesJugadores
+        //actualizarPropiedadesJugadores
         this.setLabelTurnName();
         drawInformationSquares();
     
