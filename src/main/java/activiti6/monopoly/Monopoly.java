@@ -9,7 +9,7 @@ public class Monopoly {
     
     public static void main(String[] args) {
         
-        // It sets up the graphical user interface (GUI) using SwingUtilities.invokeLater.
+        // It sets up the graphical user interface (GUI)
         SwingUtilities.invokeLater(() -> {
             MonopolyGui gui = new MonopolyGui();
             gui.setVisible(true); 

@@ -23,22 +23,22 @@ public class Board implements Serializable {
         squares = new ArrayList<>();
 
         //add squares
-        squares.add(new StartSquare("Start", 0));
-        squares.add(new PropertySquare("Street", 1));
-        squares.add(new ChanceSquare("Chance",  2));
-        squares.add(new PropertySquare("House", 3));
-        squares.add(new JailSquare("Jail", 4));
-        squares.add(new PropertySquare("Hospital", 5));
-        squares.add(new SpecialSquare("Special", 6));
-        squares.add(new PropertySquare("Street", 7));
-        squares.add(new EmptySquare("Empty",8));
-        squares.add(new PropertySquare("Street", 9));
-        squares.add(new ChanceSquare("Chance", 10));
-        squares.add(new PropertySquare("Hotel", 11));
-        squares.add(new JailSquare("Jail", 12));
-        squares.add(new PropertySquare("Street", 13));
-        squares.add(new SpecialSquare("Special", 14));
-        squares.add(new PropertySquare("Street", 15));
+        squares.add(new StartSquare("Inicio", 0));
+        squares.add(new PropertySquare("Calle Gran Via", 1));
+        squares.add(new ChanceSquare("Suerte",  2));
+        squares.add(new PropertySquare("Mansion", 3));
+        squares.add(new JailSquare("Translado a la carcel", 4));
+        squares.add(new PropertySquare("Hospital PTS", 5));
+        squares.add(new SpecialSquare("Impuesto a la banca", 6));
+        squares.add(new PropertySquare("Calle Real de la Alhambra", 7));
+        squares.add(new EmptySquare("Vacia",8));
+        squares.add(new PropertySquare("Calle Elvira", 9));
+        squares.add(new ChanceSquare("Suerte", 10));
+        squares.add(new PropertySquare("Hotel Luna", 11));
+        squares.add(new JailSquare("Carcel", 12));
+        squares.add(new PropertySquare("CC Nevada", 13));
+        squares.add(new SpecialSquare("Impuesto a la banca", 14));
+        squares.add(new PropertySquare("Calle Blas Infante", 15));
         
         playerOne.setCurrentPosition(0);
         playerTwo.setCurrentPosition(0);
