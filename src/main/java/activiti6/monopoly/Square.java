@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package activiti6.monopoly;
 
 import java.awt.Color;
-
+import java.io.Serializable;
 /**
  *
  * @author Fredy
  */
-public class Square implements ActionHandler {
+public class Square implements ActionHandler, Serializable {
     private String name;
     private Color color;
     private int position;
@@ -50,6 +46,15 @@ public class Square implements ActionHandler {
     @Override
     public String executeAction(Player player){
         return "";
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("name: ").append(this.name).append("\n");
+        sb.append("color: ").append(this.color.toString()).append("\n");
+        sb.append("position: ").append(this.position).append("\n");
+        return sb.toString();
     }
 }
 

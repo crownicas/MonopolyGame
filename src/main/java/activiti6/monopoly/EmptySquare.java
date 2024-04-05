@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package activiti6.monopoly;
-
-import java.awt.Color;
-import java.io.Serializable;
-
 /**
  *
  * @author Fredy
  */
-public class EmptySquare extends Square implements ActionHandler, Serializable{
+import java.awt.Color;
+
+public class EmptySquare extends Square implements ActionHandler{
     public EmptySquare() {
         super();
     }

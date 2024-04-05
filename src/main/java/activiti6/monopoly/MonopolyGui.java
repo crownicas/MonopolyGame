@@ -40,16 +40,16 @@ public class MonopolyGui extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 255, 153));
         setForeground(java.awt.Color.yellow);
 
-        tNamePlayerOne.setBackground(new java.awt.Color(204, 204, 204));
+        tNamePlayerOne.setBackground(new java.awt.Color(255, 255, 255));
         tNamePlayerOne.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        tNamePlayerTwo.setBackground(new java.awt.Color(204, 204, 204));
+        tNamePlayerTwo.setBackground(new java.awt.Color(255, 255, 255));
         tNamePlayerTwo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         bNewPlay.setBackground(new java.awt.Color(204, 204, 204));
         bNewPlay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bNewPlay.setText("Jugar");
-        bNewPlay.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bNewPlay.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bNewPlay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bNewPlayMouseClicked(evt);
@@ -64,7 +64,7 @@ public class MonopolyGui extends javax.swing.JFrame {
         bCloseWindow.setBackground(new java.awt.Color(204, 204, 204));
         bCloseWindow.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bCloseWindow.setText("Salir");
-        bCloseWindow.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bCloseWindow.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bCloseWindow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bCloseWindowActionPerformed(evt);
@@ -81,7 +81,7 @@ public class MonopolyGui extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("MONOPOLY");
+        jLabel3.setText("MEGAPOLY");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jLabel3.setOpaque(true);
 
@@ -140,15 +140,16 @@ public class MonopolyGui extends javax.swing.JFrame {
         String name_player_one = tNamePlayerOne.getText();
         String name_player_two = tNamePlayerTwo.getText();
         
-        Player player_one = new Player(name_player_one, Color.ORANGE);
-        Player player_two = new Player(name_player_two, Color.GREEN);
+        Player player_one = new Player(name_player_one, Color.red);
+        Player player_two = new Player(name_player_two, Color.green);
         
         Board board = new Board(player_one, player_two);
 
         //Start a new play
         MonopolyGuiBoard guiBoard = new MonopolyGuiBoard(board);
-        guiBoard.setSize(950,1050);
+        guiBoard.setSize(1060,1050);
         guiBoard.setVisible(true);
+        guiBoard.setLocationRelativeTo(null);
         
         this.dispose();
     }//GEN-LAST:event_bNewPlayActionPerformed

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.io.Serializable; //serializable
 
-public class Board implements Serializable{ //serializable
+public class Board implements Serializable { //serializable
     private final Player playerOne;
     private final Player playerTwo;
     private Player turn;
@@ -41,6 +41,9 @@ public class Board implements Serializable{ //serializable
         squares.add(new PropertySquare("Street", 13));
         squares.add(new SpecialSquare("Special", 14));
         squares.add(new PropertySquare("Street", 15));
+        
+        playerOne.setCurrentPosition(0);
+        playerTwo.setCurrentPosition(0);
     }
     
     public int rollDie(){
@@ -52,20 +55,7 @@ public class Board implements Serializable{ //serializable
         return this.turn;
     }
 
-    public void newPlay(){
-        //initialize the game
-        initPlay();
-        //determine who starts
-        whoStarts();
-    }
-
-    public void initPlay(){
-        //set initial position
-        playerOne.setCurrentPosition(0);
-        playerTwo.setCurrentPosition(0);
-    }
-
-    private void whoStarts(){
+    public void whoStarts(){
         int resultPlayerOne = rollDie();
         int resultPlayerTwo = rollDie();
         
@@ -106,18 +96,6 @@ public class Board implements Serializable{ //serializable
         }
     }
 
-    public void finishPlay(){
-
-    }
-
-    public void savePlay(){
-
-    }
-
-    public void loadPlay(){
-
-    }
-
     public ArrayList<Square> getSquares(){
         return this.squares;
     }
@@ -134,17 +112,13 @@ public class Board implements Serializable{ //serializable
         return this.playerTwo;
     }
 
-    public void displayOptions(){
-
-    }
-    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Jugador 1: ").append(playerOne).append("\n");
-        sb.append("Jugador 2: ").append(playerTwo).append("\n");
-        sb.append("Jugador en turno: ").append(turn != null ? turn.getName() : "Ninguno").append("\n");
-        sb.append("Squares: ").append(squares).append("\n");
+        sb.append("playerOne").append(playerOne).append("\n");
+        sb.append("playerTwo").append(playerTwo).append("\n");
+        sb.append("turn").append(turn != null ? turn.getName() : "Ninguno").append("\n");
+        sb.append("squares").append(squares).append("\n");
         return sb.toString();
     }
 }

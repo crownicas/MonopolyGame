@@ -63,12 +63,23 @@ public class Player implements Serializable{
         return this.pieceColor;
     }
     
+    public String getPieceColorName() {
+        if (pieceColor.equals(Color.RED)) {
+            return "red";
+        } else if (pieceColor.equals(Color.GREEN)) {
+            return "green";
+        }
+        else {
+            return "unknown";
+        }
+    }
+    
     @Override
     public String toString() {
-    return "Jugador: " + name +
-           "\nDinero: " + megaMoney +
-           "\nPosición actual: " + currentPosition +
-           "\nBloqueado: " + blocked +
-           "\nColor de ficha: " + pieceColor.toString();
+    return "name: " + name +
+           "megaMoney: " + megaMoney +
+           "currentPosition: " + currentPosition +
+           "blocked: " + blocked +
+           "pieceColor: " + pieceColor.toString();
     }
 }

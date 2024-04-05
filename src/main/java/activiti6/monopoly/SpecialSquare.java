@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author Fredy
  */
-public class SpecialSquare extends Square implements Serializable{
+public class SpecialSquare extends Square {
     private static final int BANK_TAX = 10;
 
     public SpecialSquare() {

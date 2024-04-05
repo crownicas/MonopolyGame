@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package activiti6.monopoly;
-import java.io.Serializable;
-
 /**
  *
  * @author Fredy
  */
+import java.io.Serializable;
 import java.awt.Color;
-import java.util.Scanner;
-public class PropertySquare extends Square implements Serializable{
+
+public class PropertySquare extends Square implements Serializable {
     private static final int PROPERTY_PRICE = 20;
     private static final int TAX_PRICE = 40;
 
@@ -57,7 +52,7 @@ public class PropertySquare extends Square implements Serializable{
     }
 
     @Override
-    public String executeAction(Player player){
+    public String executeAction(Player player) {
         if (!isBought) {
             return "bough_action";
         } else {
@@ -65,7 +60,7 @@ public class PropertySquare extends Square implements Serializable{
         }
     }
 
-    public String buyProperty(Player player){
+    public String buyProperty(Player player) {
         String message = "";
         
         if (!isBought && player.getMegaMoney() >= PROPERTY_PRICE && owner == null){
@@ -80,7 +75,7 @@ public class PropertySquare extends Square implements Serializable{
         return message;
     }
 
-    public String payTax(Player player){
+    public String payTax(Player player) {
         if(isBought && !owner.equals(player)) {
             player.setMegaMoney(player.getMegaMoney() - TAX_PRICE);
             owner.setMegaMoney(owner.getMegaMoney() + TAX_PRICE);
@@ -90,4 +85,16 @@ public class PropertySquare extends Square implements Serializable{
         
         return "";
     }
+    
+     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("name: ").append(this.getName()).append("\n");
+        sb.append("color: ").append(this.getColor().toString()).append("\n");
+        sb.append("position: ").append(this.getPosition()).append("\n");
+        sb.append("isBought: ").append(this.isBought).append("\n");
+        sb.append("wantToBuy: ").append(this.wantToBuy).append("\n");
+        sb.append("owner: ").append(this.owner).append("\n");
+        return sb.toString();
+    }  
 }

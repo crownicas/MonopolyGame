@@ -1,18 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package activiti6.monopoly;
-
 /**
  *
  * @author Fredy
  */
 import java.awt.Color;
 import java.util.Random;
-import java.io.Serializable;
 
-public class ChanceSquare extends Square implements Serializable {
+public class ChanceSquare extends Square {
     private static final int BEAUTY_CONTEST = 20;
     private static final int BIRTHDAY = 10;
     private static final int TRAFFIC_TICKET = 10;

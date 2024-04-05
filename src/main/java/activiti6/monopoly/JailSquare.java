@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Fredy
  */
-public class JailSquare extends Square implements Serializable {
+public class JailSquare extends Square {
     public JailSquare() {
         super();
     }
