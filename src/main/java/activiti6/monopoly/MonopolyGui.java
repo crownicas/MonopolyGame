@@ -1,15 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package activiti6.monopoly;
-
-import java.awt.Color;
-
 /**
  *
- * @author Cristina
+ * @author Fredy
  */
+import java.awt.Color;
+
 public class MonopolyGui extends javax.swing.JFrame {
 
     /**

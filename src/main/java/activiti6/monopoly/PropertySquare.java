@@ -3,10 +3,9 @@ package activiti6.monopoly;
  *
  * @author Fredy
  */
-import java.io.Serializable;
 import java.awt.Color;
 
-public class PropertySquare extends Square implements Serializable {
+public class PropertySquare extends Square {
     private static final int PROPERTY_PRICE = 20;
     private static final int TAX_PRICE = 40;
 
@@ -59,7 +58,9 @@ public class PropertySquare extends Square implements Serializable {
             return payTax(player);
         }
     }
-
+    
+    
+    // The player tries to purchase a property
     public String buyProperty(Player player) {
         String message = "";
         
@@ -74,7 +75,7 @@ public class PropertySquare extends Square implements Serializable {
         
         return message;
     }
-
+    // The player pays a tax
     public String payTax(Player player) {
         if(isBought && !owner.equals(player)) {
             player.setMegaMoney(player.getMegaMoney() - TAX_PRICE);

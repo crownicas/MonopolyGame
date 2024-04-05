@@ -1,20 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package activiti6.monopoly;
-
-import java.awt.*;
-import java.util.ArrayList;
-import javax.swing.*;
-import java.io.*; //borra si no funciona serializable
-import java.util.HashMap;
-
 /**
  *
  * @author Fredy
  */
-public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable {  //Serializable. Se han convertido todas las clases a serializable
+import java.awt.*;
+import javax.swing.*;
+import java.io.*;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+
+public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable {
     private Board board;
     private int rows = 5;
     private int cols = 5;
@@ -35,6 +31,11 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
         this.playTurn(); 
     }
     
+    // This method initializes and draws the panel squares on the game board.
+    // It creates a 2D array of JPanels representing the board squares and styles them.
+    // Then, it fills in the squares starting from the bottom border, moving clockwise.
+    // Each square is associated with its panel and added to the squareMap.
+    // Finally, player pieces are moved to their starting positions on the board.
     private void drawPanelSquare() {
         ArrayList<Square> squares = this.board.getSquares();
         panelBoard = new JPanel[this.rows][this.cols];
@@ -53,8 +54,7 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
         int row = 4;
         int col = 4;
         int indice = 0;
-        
-        //rellenamos el borde inferior del tablero
+        // Fills the bottom border of the game board.
         for (int i = col; i >= 0; i--) {
             this.createSquarePanel(panelBoard[row][i], squares.get(indice));
             this.squareMap.put(indice, panelBoard[row][i]);
@@ -63,7 +63,7 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
         
         col = 0;
         row = 3;
-        //rellenamos el borde izquierdo
+        // Fills the left border of the game board
         for (int i = row; i >= 0; i--) {
             this.createSquarePanel(panelBoard[i][col], squares.get(indice));
             this.squareMap.put(indice, panelBoard[i][col]);
@@ -72,7 +72,7 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
         
         col = 1;
         row = 0;
-        //rellenamos el borde superior
+        // Fills the top border of the game board
         for (int i = col; i < this.cols; i++) {
             this.createSquarePanel(panelBoard[row][i], squares.get(indice));
             this.squareMap.put(indice, panelBoard[row][i]);
@@ -81,7 +81,7 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
         
         col = this.cols - 1;
         row = 1;
-        //rellenamos el borde derecho
+        // Fills the right border of the game board
         for (int i = row; i < this.rows - 1; i++) {
             this.createSquarePanel(panelBoard[i][col], squares.get(indice));
             this.squareMap.put(indice, panelBoard[i][col]);
@@ -91,14 +91,17 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
         this.movePieceToStart(this.board.getPlayerOne(), this.board.getPlayerTwo());
     }
     
+    // Method to create and configure a panel representing a square on the game board.
+    // It sets the layout to null for custom positioning, sets the panel size, and adds a border.
+    // Components are added to display the square's color, name, owner (if applicable), and price (if it's a property square).
     private void createSquarePanel(JPanel squarePanel, Square square) {
         squarePanel.setLayout(null);
-        squarePanel.setSize(new Dimension(200, 200));
-        squarePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, WIDTH));
+        squarePanel.setSize(new Dimension(200, 200)); 
+        squarePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, WIDTH)); // Set border of the panel
         squarePanel.setVisible(true);
         
-        int maxWith = squarePanel.getWidth();
-    
+        int maxWith = squarePanel.getWidth(); // Get the maximum width of the panel
+        
         JLabel colorRow = new JLabel();
         colorRow.setName("colorRow");
         colorRow.setVisible(true);
@@ -149,7 +152,8 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
             priceRow.setText(propSquare.getPrice() + "MM");
         }
     }
-    
+    // Method to move player pieces to their starting positions on the game board.
+    // It retrieves the current positions of both players and places their colored JLabel pieces on the corresponding empty rows.
     private void movePieceToStart(Player playerOne, Player playerTwo) {
         int playerOnePosition = playerOne.getCurrentPosition();
         int playerTwoPosition = playerTwo.getCurrentPosition();
@@ -185,7 +189,7 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
 
             String pieceName = currentPlayer.getPieceColorName();
 
-            //Borramos la pieza de la casilla actual
+            // Removes the player piece from the current square
             Component emptyRow = this.findComponentByName(current_panel, "emptyRow");
             Component removePiece = this.findComponentByName(((JPanel)emptyRow), pieceName);
             ((JPanel)emptyRow).remove(removePiece);
@@ -195,7 +199,7 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
             
             Player otherPlayer = this.getPlayerNotTurn();
             
-            //Pintamos la pieza en la nueva casilla
+            // Paints the player piece on the new square
             emptyRow = this.findComponentByName(next_panel, "emptyRow");
             JLabel piece = new JLabel();
             piece.setName(currentPlayer.getPieceColorName());
@@ -301,6 +305,9 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
         ((JLabel) ownerRow).setText("Propiedad de: " + ((PropertySquare)square).getOwner().getName());
     }
     
+    // Executes actions related to a square on the game board
+    // Handles purchases, deducts money on birthdays, and updates player positions and money
+    // Returns the action message
     private String executeSquareAction(int position) {
         Square square = this.board.getSquare(position);
         Player current = this.board.getPlayerTurn();
@@ -551,7 +558,11 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // Handles loading a game from a file when the "Load" menu item is clicked
+    // Opens a file chooser dialog for selecting the game file
+    // Reads the serialized board object from the file and displays it
+    // Closes the current window after loading
     private void jMenuLoadItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLoadItemActionPerformed
         // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
@@ -572,7 +583,11 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
             }
         }
     }//GEN-LAST:event_jMenuLoadItemActionPerformed
-
+    
+    // Handles saving the game when "Save" is clicked in the menu.
+    // Allows the user to choose the save location using a file chooser.
+    // Serializes and writes the current game board to the selected file.
+    // Displays a success message upon successful save, or an error message if saving fails.
     private void jMenuSaveItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSaveItemActionPerformed
         // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
@@ -587,7 +602,8 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
             }
         }
     }//GEN-LAST:event_jMenuSaveItemActionPerformed
-
+    
+    // Handles rolling the die and player movement
     private void bDieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDieActionPerformed
         int die = this.board.rollDie();
         this.updatePAction("Has sacado: " + String.valueOf(die));
@@ -620,11 +636,12 @@ public class MonopolyGuiBoard extends javax.swing.JFrame implements Serializable
             this.changeTurn(message);
         }
     }//GEN-LAST:event_bDieActionPerformed
-
+    
+    // Increases the player's money when passing the start square
     private void hasPassedStartSquare(Player currentPlayer) {
         currentPlayer.setMegaMoney(currentPlayer.getMegaMoney() + StartSquare.PASS_BY_START_SQUARE);
     }
-    
+    // Changes the turn to the next player and updates the player action message.
     private void changeTurn(String message) {
         this.board.changeTurn();
         this.updatePAction(message);

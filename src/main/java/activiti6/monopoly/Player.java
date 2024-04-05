@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package activiti6.monopoly;
-
-import java.awt.Color;
-import java.io.Serializable;
-
 /**
  *
  * @author Fredy
  */
+import java.awt.Color;
+import java.io.Serializable;
+
 public class Player implements Serializable{
     private static final int INIT_MEGA_MONEY = 100;
     private String name;
@@ -49,11 +44,12 @@ public class Player implements Serializable{
 
     public void setBlocked(boolean blocked){this.blocked = blocked;}
 
+    // This method adds the specified amount of money to the player's account
     public void addAmount(int amount){
         setMegaMoney(getMegaMoney() + amount);
         System.out.println("Se ha agregado " + amount + " a tu cuenta. Tienes en total " + getMegaMoney());
     }
-
+    // This method subtracts the specified amount of money from the player's account.
     public void subtractAmount(int amount){
         setMegaMoney(getMegaMoney() - amount);
         System.out.println("Se ha restado " + amount + " de su cuenta.  Tienes en total " + getMegaMoney());
@@ -62,7 +58,7 @@ public class Player implements Serializable{
     public Color getPieceColor() {
         return this.pieceColor;
     }
-    
+    // This method returns the name of the piece color.
     public String getPieceColorName() {
         if (pieceColor.equals(Color.RED)) {
             return "red";

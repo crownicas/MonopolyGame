@@ -19,4 +19,3 @@ public class EmptySquare extends Square implements ActionHandler{
         return "Suerte en la proxima tirada.";
     }
 }
-

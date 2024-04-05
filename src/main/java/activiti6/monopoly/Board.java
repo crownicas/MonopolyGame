@@ -1,24 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package activiti6.monopoly;
-
 /**
  *
  * @author Fredy
  */
 import java.util.ArrayList;
 import java.util.Random;
-import java.io.Serializable; //serializable
+import java.io.Serializable;
 
-public class Board implements Serializable { //serializable
+public class Board implements Serializable {
     private final Player playerOne;
     private final Player playerTwo;
     private Player turn;
 
     private ArrayList<Square> squares = new ArrayList<>(16);
-
+    
+    // Constructor initializes a game board with two players and various types of squares
+    // Each square is named and assigned an index, then added to the board
+    // Both players start at the Start square
     public Board(Player player_one, Player player_two){
         playerOne = player_one;
         playerTwo = player_two;
